@@ -6,6 +6,9 @@
   "scripts": {
     "test": "npm test"
   },
+  "bin": {
+    "bdt": "bin/bdt"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bluedapp/bdt.git"
