@@ -1,0 +1,31 @@
+{
+  "name": "bdt",
+  "version": "0.0.0",
+  "description": "Blued Developer Tools ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluedapp/bdt.git"
+  },
+  "keywords": [
+    "blued"
+  ],
+  "author": "mdemo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bluedapp/bdt/issues"
+  },
+  "homepage": "https://github.com/bluedapp/bdt#readme",
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-standard": "^1.3.2"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
+}
