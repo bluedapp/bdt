@@ -46,5 +46,4 @@ process.on('exit', function () {
 const tag = program.tag || now()
 const message = program.message ? `-m "${program.message}"` : ''
 execSync(`git tag -a ${tag} ${message} && git push origin --tags`)
-console.log(`git tag -a ${tag} ${message} && git push origin --tags`)
 console.log(chalk.green('deploy success'))

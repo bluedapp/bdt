@@ -3,5 +3,5 @@
 require('commander')
   .version(require('../package').version)
   .usage('<command> [options]')
-  .command('deploy', 'list available official templates')
+  .command('deploy', 'Deploy to Blued App Engine')
   .parse(process.argv)
