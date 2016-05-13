@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const execSync = require('child_process').execSync
+const chalk = require('chalk')
+const now = require('../lib/now')
+
+/**
+ * Usage.
+ */
+
+program
+  .usage('<template-name> [project-name]')
+  .option('-m, --message [value]', 'deploy with message')
+  .option('-a, --tag [value]', 'deploy with version')
+  .parse(process.argv)
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # deploy with message'))
+  console.log('    $ bdt deploy -m "some new features"')
+  console.log()
+  console.log(chalk.gray('    # deploy with version'))
+  console.log('    $ bdt deploy -a 0.1.0')
+  console.log()
+})
+
+/**
+ * Padding.
+ */
+
+console.log()
+process.on('exit', function () {
+  console.log()
+})
+
+/**
+ * Settings.
+ */
+
+const tag = program.tag || now()
+const message = `-m "${program.message}"` || ''
+
+execSync(`git tag -a ${tag} ${message} && git push origin --tags`)
+console.log(chalk.green('deploy success'))
