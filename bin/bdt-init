@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const yeoman = require('yeoman-environment')
+const env = yeoman.createEnv()
+const program = require('commander')
+const chalk = require('chalk')
+env.register(require.resolve('generator-bae/generators/app'), 'bae')
+
+/**
+ * Usage.
+ */
+
+program
+  .usage('[template-name] <project-name>')
+  .parse(process.argv)
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # init a Node.js project with a name'))
+  console.log('    $ bdt init node [project-name]')
+  console.log()
+  console.log(chalk.gray('    # init a Node.js project in current directory'))
+  console.log('    $ bdt init node')
+  console.log()
+})
+
+function help () {
+  if (program.args.length < 1) return program.help()
+}
+help()
+/**
+ * Padding.
+ */
+
+console.log()
+process.on('exit', function () {
+  console.log()
+})
+
+/**
+ * Settings.
+ */
+const template = program.args[0]
+const project = program.args[1] || ''
+env.run('bae', {
+  template: template,
+  project: project
+})

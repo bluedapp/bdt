@@ -10,7 +10,7 @@ const now = require('../lib/now')
  */
 
 program
-  .usage('<template-name> [project-name]')
+  .usage('[options]')
   .option('-m, --message [value]', 'deploy with message')
   .option('-a, --tag [value]', 'deploy with version')
   .parse(process.argv)
