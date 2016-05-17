@@ -8,6 +8,28 @@ Blued Developer Tools
 [![Node.js dependencies][david-image]][david-url]
 
 
+### Installation
+
+Prerequisites: [Node.js](https://nodejs.org/en/) (6.x preferred).
+
+``` bash
+$ npm install -g bdt
+```
+
+### Usage
+
+``` bash
+$ bdt -h
+$ bdt init <template-name> <project-name>
+$ bdt deploy
+```
+
+Example:
+
+``` bash
+$ bdt init node my-project
+$ bdt deploy
+```
 
 
 [npm-image]: https://img.shields.io/npm/v/bdt.svg?style=flat-square

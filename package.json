@@ -1,6 +1,6 @@
 {
   "name": "bdt",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Blued Developer Tools ",
   "preferGlobal": true,
   "main": "index.js",
@@ -32,7 +32,7 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
-    "generator-bae": "0.0.4",
+    "generator-bae": "0.1.0",
     "moment": "^2.13.0",
     "yeoman-environment": "^1.6.1"
   },
