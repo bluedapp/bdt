@@ -47,4 +47,4 @@ const tag = program.tag || now()
 const message = program.message || `"version: ${tag}"`
 execSync(`git tag -a ${tag} -m ${message} && git push origin --tags`)
 console.log(chalk.green('deploy success'))
-open('https://rancher.blued.cn')
+open('http://bae.blued.cn/dashboard')
