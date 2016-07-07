@@ -4,7 +4,7 @@ const program = require('commander')
 const execSync = require('child_process').execSync
 const chalk = require('chalk')
 const now = require('../lib/now')
-
+const open = require('open')
 /**
  * Usage.
  */
@@ -47,3 +47,4 @@ const tag = program.tag || now()
 const message = program.message || `"version: ${tag}"`
 execSync(`git tag -a ${tag} -m ${message} && git push origin --tags`)
 console.log(chalk.green('deploy success'))
+open('https://rancher.blued.cn')
