@@ -2,7 +2,7 @@
 
 require('commander')
   .version(require('../package').version)
-  .usage('<command> [options]')
+  .usage('<command> <env> [options]')
   .command('deploy', 'Deploy to Blued App Engine')
   .command('init', 'Init Blued App Engine Template')
   .parse(process.argv)
