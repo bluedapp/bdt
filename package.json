@@ -1,6 +1,6 @@
 {
   "name": "bdt",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Blued Developer Tools ",
   "preferGlobal": true,
   "main": "index.js",
