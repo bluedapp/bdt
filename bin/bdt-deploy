@@ -43,19 +43,38 @@ process.on('exit', function () {
  * Settings.
  */
 
-let result = execSync('git branch --list')
-let jsonData = result.toString()
-console.log(chalk.green(jsonData))
-// const env = program.args[0]
-// if (env === 'pro' || env === 'dev') {
-//   const tag = program.tag || now()
-//   const tagName = env + tag
-//   const message = program.message || `"version: ${tagName}"`
-//   execSync(`git tag -a ${tagName} -m ${message} && git push origin --tags`)
-//   console.log(chalk.green('deploy success'))
-//   if (env === 'pro') {
-//     open('http://bae.blued.cn/dashboard')
-//   }
-// } else {
-//   console.log(chalk.red('参数错误，请添加部署环境 dev或者pro'))
-// }
+let branch = execSync('git branch --list')
+let branchString = branch.toString()
+let currentBranch = ''
+if (branchString.indexOf('* dev') >= 0) { // 当前是dev版本,只能用于上线测试环境
+  currentBranch = 'dev'
+} else if (branchString.indexOf('* master') >= 0) { // 当前是master版本，只能用于上线正式环境
+  currentBranch = 'master'
+} else {
+  console.log(chalk.yellow('暂不支持部署dev、master之外的分支'))
+}
+const env = program.args[0]
+
+if (env === 'pro' || env === 'dev') {
+  // 想上线正式环境，必须确认当前在master分支；想上线测试环境，必须确认当前在dev分支
+  if ((env === 'pro' && currentBranch === 'master') || (env === 'dev' && currentBranch === 'dev')) {
+    console.log(chalk.green('deploy success'))
+    return
+    const tag = program.tag || now()
+    const tagName = env + tag
+    const message = program.message || `"version: ${tagName}"`
+    execSync(`git tag -a ${tagName} -m ${message} && git push origin --tags`)
+    console.log(chalk.green('deploy success'))
+    if (env === 'pro') {
+      open('http://bae.blued.cn/dashboard')
+    }
+  } else {
+    if (env === 'pro') {
+      console.log(chalk.red('想要上线正式环境，请先切换到master分支'))
+    } else {
+      console.log(chalk.red('想要上线测试环境，请先切换到dev分支'))
+    }
+  }
+} else {
+  console.log(chalk.red('参数错误，请添加部署环境 dev或者pro'))
+}
