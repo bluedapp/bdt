@@ -43,16 +43,19 @@ process.on('exit', function () {
  * Settings.
  */
 
-const env = program.args[0]
-if (env === 'pro' || env === 'dev') {
-  const tag = program.tag || now()
-  const tagName = env + tag
-  const message = program.message || `"version: ${tagName}"`
-  execSync(`git tag -a ${tagName} -m ${message} && git push origin --tags`)
-  console.log(chalk.green('deploy success'))
-  if (env === 'pro') {
-    open('http://bae.blued.cn/dashboard')
-  }
-} else {
-  console.log(chalk.red('参数错误，请添加部署环境 dev或者pro'))
-}
+let result = execSync('git branch --list')
+let jsonData = result.toString()
+console.log(chalk.green(jsonData))
+// const env = program.args[0]
+// if (env === 'pro' || env === 'dev') {
+//   const tag = program.tag || now()
+//   const tagName = env + tag
+//   const message = program.message || `"version: ${tagName}"`
+//   execSync(`git tag -a ${tagName} -m ${message} && git push origin --tags`)
+//   console.log(chalk.green('deploy success'))
+//   if (env === 'pro') {
+//     open('http://bae.blued.cn/dashboard')
+//   }
+// } else {
+//   console.log(chalk.red('参数错误，请添加部署环境 dev或者pro'))
+// }
