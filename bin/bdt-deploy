@@ -58,8 +58,6 @@ const env = program.args[0]
 if (env === 'pro' || env === 'dev') {
   // 想上线正式环境，必须确认当前在master分支；想上线测试环境，必须确认当前在dev分支
   if ((env === 'pro' && currentBranch === 'master') || (env === 'dev' && currentBranch === 'dev')) {
-    console.log(chalk.green('deploy success'))
-    return
     const tag = program.tag || now()
     const tagName = env + tag
     const message = program.message || `"version: ${tagName}"`
