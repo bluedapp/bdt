@@ -19,16 +19,17 @@ $ npm install -g bdt
 ### Usage
 
 ``` bash
-$ bdt -h
-$ bdt init <template-name> <project-name>
-$ bdt deploy
+$ bdt -h // 帮助文档
+$ bdt init <template-name> <project-name> // 初始化项目
+$ bdt deploy pro // 部署到正式环境
+$ bdt deploy dev // 部署到测试环境
 ```
 
 Example:
 
 ``` bash
 $ bdt init node my-project
-$ bdt deploy
+$ bdt deploy dev
 ```
 
 
