@@ -1,6 +1,7 @@
-# bdt
+# bdt 简介
 
 Blued Developer Tools
+用于创建项目模板和部署的命令
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -31,7 +32,9 @@ Example:
 $ bdt init node my-project
 $ bdt deploy dev
 ```
-
+### 实现原理
+主要是利用了 commander 来实现命令行的功能
+部署部分其实就是利用命令行来给项目打tag，而项目模板则是用的generator-bae来实现。
 
 [npm-image]: https://img.shields.io/npm/v/bdt.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/bdt
